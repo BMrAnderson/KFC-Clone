@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+
+@{Html.RenderPartial("_NavTop");}
+
+
+<div class="container mt-5">
+    <div style="display:flex">
+        <h2 class="text-dark font-weight-bold">Promotions</h2>
+        <a href="#" onclick="window.location='@Url.Action("CartOrders", "Order")'" class="text-dark ml-auto" style="font-size:20px">
+            <i class="fa fa-shopping-basket"></i>
+            <span id="total" class="badge badge-danger">@ViewBag.Amount</span>
+        </a>
+    </div>
+    <div class="card-deck smooth-border mt-4">
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/Kentucy_All_SF.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R199,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="199,90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage","Order", new { Id = 1, Price = 199.90, Title = "Order 1", Quantity = 1})');">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/All_In_One_Plus_For_Sharing.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R129,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="129.90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage","Order", new { Id = 2, Price = 129.90, Title = "Order 2", Quantity = 1})');">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/Kentucy_For_2.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R66,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="66.90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage","Order", new { Id = 3, Price = 66.90, Title = "Order 3", Quantity = 1})');">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck mt-3">
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/Dunked_burger_Buddy.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R65,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="65,90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage", "Order", new { Id = 4, Price = 65.90, Title = "Order 4", Quantity = 1 });')">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/Dunked_Twister_Buddy.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R42,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="42,90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage","Order", new { Id = 5, Price = 42.90, Title = "Order 5", Quantity = 1})');">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        <div class="card shadow">
+            <img class="card-img-top" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Menu/Items/6_R65.jpg?v=1.47" />
+            <div class="card-body">
+                <p class="text-danger font-weight-bold">KENTUCKY 4 ALL SF</p>
+                <h3 class="text-dark font-weight-bold">R42,90</h3>
+                <button class="btn btn-danger btn-block font-weight-bold mt-4" name="42,90"
+                        onclick="addToCart('@Url.Action("GetPromotionsPage","Order", new { Id = 6, Price = 42.90, Title = "Order 6", Quantity = 1})');">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/umd/notify.min.js"></script>
+<script type="text/javascript">
+    var total = document.getElementById("total");
+    const addToCart = (url) => {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: (response) => {
+                if (response.success) {
+                    total.innerText = parseInt(response.amount);
+                    $.notify(response.message, "success", { position: "top center" });
+                } else {
+                    $.notify(response.message, "error", { position: "top center" })
+                }
+            }
+        })
+    }
+
+
+</script>

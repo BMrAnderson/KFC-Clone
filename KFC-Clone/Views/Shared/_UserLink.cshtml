@@ -1,0 +1,9 @@
+﻿@{ 
+    var firstName = HttpContext.Current.Request.Cookies.Get("FirstName").Value;
+}
+
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a>@Html.ActionLink(firstName, "UserProfile", "Account", null, new { @class = "font-weight-bold" })</a>
+    </li>
+</ul>

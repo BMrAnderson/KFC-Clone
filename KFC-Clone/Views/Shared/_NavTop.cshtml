@@ -1,0 +1,28 @@
+﻿<style>
+    .font-weight-bold {
+        color: black;
+    }
+</style>
+
+
+@Styles.Render("~/Content/css")
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-light">
+        <a href="#" onclick="window.location='@Url.Action("UserForShareView", "Home")'" class="navbar-brand">
+            <img style="width:80px" src="https://order.kfc.co.za/Content/OnlineOrderingImages/Shared/logo.png" alt="kfc-logo" />
+        </a>
+        @{
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Html.RenderPartial("_UserLink");
+            }        
+            else
+            {
+                Html.RenderPartial("_NoneUser");
+            }
+        }
+    </nav>
+</div>
+
+
+

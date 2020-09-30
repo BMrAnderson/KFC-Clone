@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "CartOrders";
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+
+    <div id="orderCart">
+        @{Html.RenderPartial("_NavTop");}
+
+        <div class="container">
+            @if (Session["orders"] != null)
+            {
+                foreach (var item in Session["orders"] as IEnumerable<KFC_Clone.Models.DBModels.Order>)
+                {
+                    <div class="card mt-2 flex-row p-3">
+                        <h5>@item.Title x @item.Quantity </h5>
+                        <h5 class="ml-auto">R @item.Price</h5>
+                        <button onclick="Remove('@Url.Action("RemoveOrder", "Order", new { id = item.OrderId})');" class="btn btn-sm ml-3">X</button>
+                    </div>
+                }
+
+                <div class="card mt-5 flex-row p-3">
+                    <h4>Total Price: </h4>
+                    <h4 class="ml-auto text-danger">R @Session["totalPrice"].ToString()</h4>
+                </div>
+
+                <div class="float-right p-2">
+                    <button class="btn btn-danger">Proceed to Checkout</button>
+                    <button class="btn btn-dark" onclick="window.location='@Url.Action("GetPromotionsPage","Order")'">Go to Menu</button>
+                </div>
+            }
+            else
+            {
+                <div class="text-center align-content-center mt-5">
+                    <b>No orders found...</b>
+                </div>
+            }
+        </div>
+    </div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/umd/notify.min.js"></script>
+<script type="text/javascript">
+    const Remove = (url) => {
+        if (confirm("Are you sure you want to remove this order?")) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: (response) => {
+                    if (response.success) {
+                        $.notify(response.message, "success");
+                        $("#orderCart").html(response.html);
+
+                    } else {
+                        $.notify(response.message, "warn");
+                    }
+                }
+            })
+        }
+    }
+</script>

@@ -1,0 +1,15 @@
+﻿<style>
+    ul > li > a {
+        text-decoration: none;
+    }
+
+    ul > li > a:hover {
+        color: darkred;
+    }
+</style>
+
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item" id="signin">
+        <a>@Html.ActionLink("Sign In/Sign Up", "SignIn", "Account", null, new { @class = "font-weight-bold text-dark" })</a>
+    </li>
+</ul>

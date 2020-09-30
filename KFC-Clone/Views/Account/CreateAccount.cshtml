@@ -1,0 +1,69 @@
+﻿@model KFC_Clone.Models.DBModels.User
+    @{ 
+        ViewBag.Title = "CreateAccount";
+        Layout = null;
+    }
+}
+
+<style>
+    .btn {
+        height: 50px;
+    }
+
+</style>
+
+@{ Html.RenderPartial("_NavTop");}
+<hr />
+
+<div class="container">
+    <h2 class="text-center font-weight-bold">Create your account</h2>
+    <div class="row justify-content-center text-center mt-4">
+        @using (Html.BeginForm("CreateAccount", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group" style="width:500px">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control mw-100", placeholder = "Name*" } })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="form-group" style="width:500px">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control mw-100", placeholder = "Phone Number*" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </div>
+            <div class="form-group" style="width:500px">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control mw-100", placeholder = "Email*" } })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group" style="width:500px">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control mw-100", placeholder = "Password*" } })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div class="form-group d-flex">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="" /> 
+                        <strong>Sign Up</strong> for recieving <strong>News</strong> from KFC
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-danger btn-block font-weight-bold mt-3">CREATE ACCOUNT</button>
+
+            <div class="form-group">
+                <div class="text-success">
+                    @ViewBag.Message
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    @{Html.RenderPartial("_Footer");}
+</div>
+
+

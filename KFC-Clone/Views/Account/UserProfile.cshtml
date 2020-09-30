@@ -1,0 +1,42 @@
+﻿
+@{ 
+    Layout = null;
+}
+
+    <style>
+        ln {
+            border-top: 1px solid #CCCCCC;
+            width: 300px;
+        }
+    </style>
+
+@{Html.RenderPartial("_NavTop");}
+
+    <hr />
+
+    <div class="container">
+        <nav class="navbar bg-transparent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a>@Html.ActionLink("My Orders", "", "", null, new { @class = "nav-link font-weight-bold" })</a>
+                </li>
+                <ln />
+                <li class="nav-item">
+                    <a>@Html.ActionLink("Log Out", "LogOut", "Account", null, new { @class = "active nav-link font-weight-bold" })</a>
+                </li>
+            </ul>
+        </nav>    
+        
+        <div class="text-center">
+            <p class="font-weight-bold">No order found</p>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div class="container">
+        @{Html.RenderPartial("_Footer");}
+    </div>
+
+

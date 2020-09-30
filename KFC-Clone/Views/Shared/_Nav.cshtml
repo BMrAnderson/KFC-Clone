@@ -1,0 +1,31 @@
+﻿<style>
+    #cart {
+        text-decoration: none;
+    }
+</style>
+
+
+@{ 
+    decimal total = Session["totalPrice"] != null ? (decimal)Session["totalPrice"] : 0;
+    int count = Session["count"] != null ? (int)Session["count"] : 0;
+}
+
+<!--Navigation Tabs-->
+<div class="container border-top">
+    <div class="nav bg-dark text-center align-items-center p-2">
+        <button class="btn btn-danger ml-4 text-white font-weight-bolder"
+                onclick="window.location = '@Url.Action("GetPromotionsPage", "Order")'; run();">START MY ORDER
+        </button>
+
+        <div class="col-sm-12 col-md-2 ml-auto">
+            <a id="cart" href="#" class="text-white font-weight-bold" style="font-size:18px">
+                <i class="fa fa-shopping-basket"></i>
+                <i class="badge badge-danger">@count</i>
+                <span>R @total</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
