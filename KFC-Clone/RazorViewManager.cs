@@ -20,7 +20,7 @@ namespace KFC_Clone.Models
                 viewResult.View.Render(viewContext, sw);
                 viewResult.ViewEngine.ReleaseView(controller.ControllerContext, viewResult.View);
                 return sw.GetStringBuilder().ToString();
-            }
+            }//
         }
     }
 }
