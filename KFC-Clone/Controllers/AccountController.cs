@@ -19,6 +19,7 @@ namespace KFC_Clone.Controllers
     {
         private IAccountService _accountService;
 
+        //using dependency injection
         public AccountController(IAccountService service)
         {
             _accountService = service;

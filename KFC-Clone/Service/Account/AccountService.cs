@@ -14,6 +14,7 @@ namespace KFC_Clone.Lib
         private IUserService _userRepository;
         private ISecurityService _securityService;
 
+        //using dependency injection
         public AccountService(IUserService repository, ISecurityService security)
         {
             _userRepository = repository;

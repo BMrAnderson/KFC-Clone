@@ -18,7 +18,7 @@ namespace KFC_Clone.Models.Repository
         public DbChangeTracker Table { get; }
         public IQueryable<T> TableNoTracking { get; }
 
-
+        //using dependency injection
         public Repository(KFCDBEntities context, ILogging logging )
         {
             _context = context;

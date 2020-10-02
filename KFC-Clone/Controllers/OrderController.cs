@@ -13,6 +13,7 @@ namespace KFC_Clone.Controllers
     {
         private IOrderService _orderService;
 
+        //using dependency injection
         public OrderController(IOrderService orderService)
         {
             _orderService = orderService;

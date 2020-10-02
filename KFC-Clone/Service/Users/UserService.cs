@@ -10,6 +10,7 @@ namespace KFC_Clone.Models.Repository
     {
         private IRepository<User> _userRepo;
 
+        //using dependency injection
         public UserService(IRepository<User> repository)
         {
             _userRepo = repository;
