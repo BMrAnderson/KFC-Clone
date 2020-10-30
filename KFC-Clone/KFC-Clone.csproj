@@ -152,8 +152,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\UserContextModel.cs" />
-    <Compile Include="Service\Account\AccountService.cs" />
-    <Compile Include="Service\Account\IAccountService.cs" />
+    <Compile Include="Service\AccountService.cs" />
+    <Compile Include="Service\IAccountService.cs" />
     <Compile Include="Logging\ILogging.cs" />
     <Compile Include="Logging\Logging.cs" />
     <Compile Include="Models\DBModels\DBEntities.Context.cs">
@@ -177,16 +177,15 @@
     <Compile Include="Models\DBModels\User.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service\CookieManager.cs" />
-    <Compile Include="Service\Orders\IOrderService.cs" />
-    <Compile Include="Service\Security\ISecurityService.cs" />
-    <Compile Include="Service\Orders\OrderService.cs" />
+    <Compile Include="Service\IOrderService.cs" />
+    <Compile Include="Service\ISecurityService.cs" />
+    <Compile Include="Service\OrderService.cs" />
     <Compile Include="RazorViewManager.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Service\Users\IUserService.cs" />
+    <Compile Include="Service\IUserService.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Service\Users\UserService.cs" />
-    <Compile Include="Service\Security\SecurityService.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\SecurityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

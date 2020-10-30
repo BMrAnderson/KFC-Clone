@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using KFC_Clone.Models.DBModels;
 using KFC_Clone.Models.Repository;
-using KFC_Clone.Service;
 using SaltingAndHashing.Models;
 
 namespace KFC_Clone.Lib
